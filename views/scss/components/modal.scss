@@ -1,0 +1,116 @@
+.open-modal {
+    position: absolute;
+    width: 464px;
+    height: 335px;
+    background-color: white;
+    top: 30px;
+    left: 50%;
+    margin-left: -250px;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    z-index: 10;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+  
+.close-modal {
+    display: none;
+}
+  
+.modal-head {
+    padding-top: 30px;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+
+.radio-group {
+    margin-top: 5px;
+    padding: 10px;
+}
+  
+.modal-btn-group {
+    padding: 5px 10px;
+    float: right;
+}
+  
+.modal-btn {
+    width: 85px;
+    height: 35px;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.close-btn {
+    right: 30px;
+    position: absolute;
+}
+  
+.modal-info-group {
+    margin-left: 35px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: grid;
+}
+  
+.modal-info {
+    margin-bottom: 20px;
+}
+  
+.web-input {
+    margin-left: 0px;
+    margin-top: 8px;
+}
+  
+.set-date-container {
+    display: flex;
+    margin: 20px 5px 5px 10px;
+    font-size: 18px;
+}
+
+.set-date-div {
+    margin-right: 25px;
+    font-size: 18px;
+}
+
+.set-time-container {
+    font-size: 18px;
+    display: flex;
+    margin: 20px 5px 5px 10px;
+
+    input[type=time] {
+        width: 123px;
+        height: 25px;
+        font-size: 18px;
+    }
+    label {
+        margin-left: 0px;
+    }
+}
+.set-time-div {
+    margin-right: 25px;
+}
+
+.set-day-container {
+    margin: 20px 5px 5px 10px;
+    font-size: 18px;
+
+    span {
+        margin-right: 27px;
+    }
+
+    select {
+        width: 128px;
+        height: 30px;
+        font-size: 17px;
+        margin-left: 4px;
+    }
+}
+
+.method {
+    margin-bottom: 20px;
+}
+
+.styled-radio-input {
+    font-size: 20px;
+}

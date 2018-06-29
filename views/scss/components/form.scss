@@ -1,0 +1,140 @@
+body {
+    background-color: #F1F1F1;
+    font-family: "Noto Sans","Helvetica Neue",Arial,sans-serif;
+    font-size: 16px !important;
+    font-weight: 400;
+    line-height: 1.55;
+}
+  
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0.75em 0 0.5em 0;
+}
+  
+table {
+    width: 100%;
+    margin-bottom: 20px;
+
+    td:nth-child(1){ // image
+        width: 10%;
+    }
+    td:nth-child(2){ // name
+        width: 20%;
+    }
+    td:nth-child(3){ // faculty
+        width: 15%;
+    }
+    td:nth-child(4){ // department
+        width: 15%;
+        }
+    td:nth-child(5){ // appointment
+        width: 25%;
+    }
+    td:nth-child(6){ // btn
+        width: 10%;               
+        text-align: center;
+    }
+  
+    thead {
+        tr {
+            height: 56px;
+        }
+  
+        td {
+            border-right: 1px solid #f2f2f2;
+            background-color: #d8d8d8;
+  
+            &:last-child {
+                border-right: 0;
+            }
+        }
+    }
+  
+    tbody {
+        position: relative;
+  
+        tr {
+            height: 44px;
+  
+            &:hover,
+            &.is-hovering {
+                background-color: #d8d8d8;
+            }
+  
+            &.is-selected {
+                box-shadow: 0 4px 7px 0 rgba(#414141, 0.15);
+                background-color: #00b98f;
+                color: #fff;
+  
+                a {
+                    color: #fff; // ToDo: find better way
+                }
+  
+                .no-wrap {
+                    color: #414141;
+                }
+            }
+  
+            &.is-highlighted {
+                background-color: #e8f8f5;
+            }
+        }
+    }
+  
+    tr {
+        border-bottom: 1px solid #d8d8d8;
+    }
+  
+    td {
+        padding: 10px 10px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        background-clip: padding-box; 
+    }
+
+    
+}
+
+textarea {
+    height: 50px;
+    width: 360px;
+}
+
+input[type=radio] {
+    outline: none;
+    margin-left: 35px;
+}
+  
+label {
+    margin-left: 20px;
+}
+
+input[type=text] {
+    width: 205px;
+    height: 25px;
+    font-size: 18px;
+}
+  
+.website-input{
+    width: 420px;
+    height: 35px;
+    font-size: 18px;
+    margin: 25px 5px 116px 20px;
+}
+
+.location-input{
+    width: 420px !important;
+    height: 35px !important;
+    font-size: 18px !important;
+    margin: 25px 5px 116px 20px !important;
+}
+
+.select-listsize{
+    width: 70px;
+    height: 28px;
+    margin: 0px 5px;
+    font-size: 16px;
+    padding: 3px 10px;
+}
