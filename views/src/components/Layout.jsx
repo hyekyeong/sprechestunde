@@ -17,6 +17,7 @@ class Layout extends Component {
     render() {
         return(
             <div className="main-layout">
+                
                 { !this.props.officehours.isLecturer && (
                     <Student userId={this.props.userId} />
                 )}

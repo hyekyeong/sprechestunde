@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
@@ -56,7 +55,6 @@ class LecturerList extends Component {
         const lastPage = Math.ceil(totalEntries/listSize);
         const lastEntry = this.state.currentPage < lastPage ? last+1 : list.length;
 
-        console.log()
         var filteredlist = list;
         var cells = filteredlist.slice(first,last).map(lecturer => (
             <LecturerTableRow 
@@ -74,20 +72,25 @@ class LecturerList extends Component {
                         key={lecturer.USER_ID}
                         lecturer={lecturer}
                         fromSignup={this.props.officehours.signup.find(l => l.creator_user_id ===lecturer.USER_ID)} />
-                ));; 
+                ));
         }
-        /*
+        
         if ( this. state.selectedFaculty !== "" ){
-            filteredlist = list.filter(lecturer => lecturer.FACULTY === this.state.selectedDepartment).slice(first,last);
-        }*/
-
-        if ( this. state.selectedDepartment !== "" ){
-            filteredlist = filteredlist.filter(lecturer => lecturer.VALUE === this.state.selectedDepartment).slice(first,last);
+            filteredlist = list.filter(lecturer => lecturer.FACULTY === this.state.selectedFaculty).slice(first,last);
             cells = filteredlist.map(lecturer => (
                 <LecturerTableRow 
                     key={lecturer.USER_ID}
                     lecturer={lecturer} />
-            ));; 
+            ));
+        }
+
+        if ( this. state.selectedDepartment !== "" ){
+            filteredlist = filteredlist.filter(lecturer => lecturer.DEPARTMENT === this.state.selectedDepartment).slice(first,last);
+            cells = filteredlist.map(lecturer => (
+                <LecturerTableRow 
+                    key={lecturer.USER_ID}
+                    lecturer={lecturer} />
+            ));
         }
 
         if ( this. state.selectedName !== "" ){
@@ -96,7 +99,7 @@ class LecturerList extends Component {
                 <LecturerTableRow 
                     key={lecturer.USER_ID}
                     lecturer={lecturer} />  
-            ));;
+            ));
         }
 
 
@@ -173,7 +176,7 @@ class LecturerList extends Component {
                                 }else{
                                     this.setState({ selectedDepartment: e.label })}
                             }}
-                            options={[...new Set(list.map(lecturer => lecturer.VALUE))].map(dep =>({ label: dep, value: dep}))} 
+                            options={[...new Set(list.map(lecturer => lecturer.DEPARTMENT))].map(dep =>({ label: dep, value: dep}))} 
                         />
                     </div>
 

@@ -9,8 +9,10 @@ class DefaultLayout extends React.Component {
                 <title>Sprechestunde</title>
             </head>
             <body>
-                <h3>Office Hours</h3>
-                <div id="root">{this.props.userId}</div>
+                <h3>Sprechestunde</h3>
+                <div id="root">
+                    <div className="userid">{this.props.userId}</div>
+                </div>
   
                 <script type="text/javascript" src="build/bundle.js"></script>
             </body>

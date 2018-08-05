@@ -45,14 +45,9 @@ con.connect(function(err) {
 
 app.post('/', function(req,res){
     const data = req.body.user_id;
+    console.log(data);
     res.render('default', { userId: data });
 });
-
-/*
-const selLect = 'SELECT distinct l.USER_ID, l.VALUE, u.FIRST_NAME, u.LAST_NAME, u.EMAIL, u.TYPE FROM sakai_user AS u, sakai_user_property AS l WHERE l.USER_ID=u.USER_ID AND l.name="kvv_department"';
-const selTypeList = 'SELECT distinct l.USER_ID, l.VALUE, u.FIRST_NAME, u.LAST_NAME, u.EMAIL, o.TYPE, o.Start_date,o.End_date, o.Day, o.Web_site, o.Location, o.Start_time, o.End_time  FROM sakai_user AS u, sakai_user_property AS l, officehours_type_property AS o WHERE l.USER_ID=u.USER_ID AND l.name="kvv_department" AND u.USER_ID=o.USER_ID;';
-const selType = 'SELECT * from officehours_type_property WHERE USER_ID="'+data.id+'"';
-*/
 
 app.post('/user', function(req,res){
     const data = req.body;
@@ -106,7 +101,7 @@ app.get('/toolid', function(req, res){
 });
 
 app.get('/list', function(req, res){
-    const selLect = 'SELECT distinct l.USER_ID, l.VALUE, CONCAT(u.FIRST_NAME, " ", u.LAST_NAME) AS NAME, u.EMAIL, o.TYPE, o.Start_date,o.End_date, o.Day, o.Web_site, o.Location, o.Start_time, o.End_time  FROM sakai_user AS u, sakai_user_property AS l, officehours_type_property AS o WHERE l.USER_ID=u.USER_ID AND l.name="kvv_department" AND u.USER_ID=o.USER_ID;';
+    const selLect = 'SELECT distinct l.USER_ID, d.VALUE AS DEPARTMENT, f.VALUE AS FACULTY, CONCAT(u.FIRST_NAME, " ", u.LAST_NAME) AS NAME, u.EMAIL, o.TYPE, o.Start_date,o.End_date, o.Day, o.Web_site, o.Location, o.Start_time, o.End_time FROM sakai_user AS u, sakai_user_property AS l, (SELECT * from sakai_user_property where name="kvv_department") AS d, (SELECT * from sakai_user_property where name="kvv_faculty") AS f, officehours_type_property AS o WHERE l.USER_ID=u.USER_ID AND l.USER_ID=d.USER_ID AND l.USER_ID=f.USER_ID AND u.USER_ID=o.USER_ID;';
     const selSignup = 'SELECT tbl.* FROM (SELECT title, location, creator_user_id, start_time, end_time FROM signup_meetings WHERE start_time > NOW() ORDER BY start_time ASC) as tbl GROUP BY tbl.creator_user_id;';
 
     con.query(selLect, function(err, result){
@@ -159,7 +154,7 @@ app.post('/getpermission', function(req,res){
 
                     request(getPermission, function(err, response, body){
                         if(err) throw err;
-                        console.log("access",body);
+                        console.log("access:",body);
                     });
 
                 }

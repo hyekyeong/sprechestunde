@@ -42,8 +42,6 @@ const apiMiddleware = store => next => async action => {
         type: requestType
     });
 
-    console.log(endpoint);
-
     return apiCall(method, endpoint, body).then(
         data =>
             next({

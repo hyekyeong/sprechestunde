@@ -47,8 +47,8 @@ class LecturerTableRow extends Component {
                     <img src={serverUrl+lecturer.USER_ID+"/image"} style={{width: "100px", margin: "0 auto", display: "block"}}/>
                 </td>
                 <td>{lecturer.NAME}</td>
-                <td></td>
-                <td>{lecturer.VALUE}</td>
+                <td>{lecturer.FACULTY}</td>
+                <td>{lecturer.DEPARTMENT}</td>
                 <td>{appointment}{}</td>
                 <td>
                     { lecturer.TYPE === "sign-up" &&

@@ -61,15 +61,7 @@ class Lecturer extends Component {
                     openMethodModal: true,
                     modalStatus: "create"
                 });
-            }/*
-            if( 
-                nextProps.officehours.signupUrl !== null &&
-                nextState.goToSignup === true
-             ){
-                const toolId = nextProps.officehours.signupUrl[0].TOOL_ID;
-                const signupUrl = "http://localhost:8080/portal/directtool/"+toolId;
-                parent.location.href = signupUrl;
-            }*/
+            }
         }
 
         if(this.state !== nextState) {
@@ -221,17 +213,11 @@ class Lecturer extends Component {
     }
 
     render() {
-        console.log("props", this.props);
-        console.log("state", this.state);
-
-        const userId = this.props.userId;
-        const { list, hasType, typeData, signupUrl } = this.props.officehours;
-        const { selectedDay, isDisabled } = this.state;
+        const { hasType, signupUrl } = this.props.officehours;
         const contactType = ( hasType === null || hasType === false ) ? null : this.props.officehours.typeData[0].TYPE;
         
         const toolId = ( signupUrl === null || signupUrl === undefined ) ? null : signupUrl[0].TOOL_ID;
         const signupToolUrl = "http://localhost:8080/portal/directtool/"+toolId;
-        console.log(signupToolUrl);
         const MethodModal = (
             <div className={`${ this.state.openMethodModal ? "open-modal" : "close" }`}>
                 <div className="modal-head method">
