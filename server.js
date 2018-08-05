@@ -122,7 +122,7 @@ app.post('/inserttype', function(req,res){
     });  
 });
 
-app.post('/changetype', function(req,res){
+app.put('/changetype', function(req,res){
     const data = req.body;
     const changeType = "UPDATE officehours_type_property SET TYPE='"+data.type+"', Web_site='"+data.web_site+"', Location='"+data.location+"', Start_date='"+data.start_date+"', End_date='"+data.end_date+"', Start_time='"+data.start_time+"', End_time='"+data.end_time+"', Day='"+data.day+"' WHERE USER_ID='"+data.id+"'";
     
@@ -200,7 +200,7 @@ app.post('/usesignup', function(req,res){
     });
 });
 
-app.post('/changewebsite', function(req,res){
+app.put('/changewebsite', function(req,res){
     const data = req.body;
     const changeWebsite = "UPDATE officehours_type_property SET Web_site='"+data.website+"' WHERE USER_ID='"+data.id+"'";
 
@@ -210,7 +210,7 @@ app.post('/changewebsite', function(req,res){
     });
 });
 
-app.post('/changelocation', function(req,res){
+app.put('/changelocation', function(req,res){
     const data = req.body;
     const changeLocation = "UPDATE officehours_type_property SET Location='"+data.location+"' WHERE USER_ID='"+data.id+"'";
 
@@ -220,7 +220,7 @@ app.post('/changelocation', function(req,res){
     });
 });
 
-app.post('/changedate', function(req,res){
+app.put('/changedate', function(req,res){
     const data = req.body;
     const changeDate = "UPDATE officehours_type_property SET Start_date='"+data.start_date+"', End_date='"+data.end_date+"', Start_time='"+data.start_time+"', End_time='"+data.end_time+"', Day='"+data.day+"' WHERE USER_ID='"+data.id+"'";
     

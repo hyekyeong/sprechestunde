@@ -93,7 +93,7 @@ export const saveUserType = ( id, type, web_site, location, start_date, end_date
 
 export const changeUserType = ( id, type, web_site, location, start_date, end_date, start_time, end_time, day ) => ({
     [CALL_API]: {
-        method: Methods.POST,
+        method: Methods.PUT,
         body: { id, type, web_site, location, start_date, end_date, start_time, end_time, day },
         endpoint: '//localhost:3002/changetype',
         types: [
@@ -106,7 +106,7 @@ export const changeUserType = ( id, type, web_site, location, start_date, end_da
 
 export const changeWebsite = ( id, website ) => ({
     [CALL_API]: {
-        method: Methods.POST,
+        method: Methods.PUT,
         body: { id, website },
         endpoint: '//localhost:3002/changewebsite',
         types: [
@@ -119,7 +119,7 @@ export const changeWebsite = ( id, website ) => ({
 
 export const changeLocation= ( id, location ) => ({
     [CALL_API]: {
-        method: Methods.POST,
+        method: Methods.PUT,
         body: { id, location },
         endpoint: '//localhost:3002/changelocation',
         types: [
@@ -132,7 +132,7 @@ export const changeLocation= ( id, location ) => ({
 
 export const changeDate = ( id, start_date, end_date, start_time, end_time, day ) => ({
     [CALL_API]: {
-        method: Methods.POST,
+        method: Methods.PUT,
         body: { id, start_date, end_date, start_time, end_time, day },
         endpoint: '//localhost:3002/changedate',
         types: [
