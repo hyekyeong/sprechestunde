@@ -11,7 +11,7 @@ class DefaultLayout extends React.Component {
             <body>
                 <h3>Sprechestunde</h3>
                 <div id="root">
-                    <div className="userid">{this.props.userId}</div>
+                    <div className="userid" style={{color:'#F1F1F1'}}>{this.props.userId}</div>
                 </div>
   
                 <script type="text/javascript" src="build/bundle.js"></script>
