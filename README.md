@@ -13,8 +13,3 @@ Start server
 ```
   npm start
 ```
-
-## Test
-```
-  npm test
-```

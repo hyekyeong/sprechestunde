@@ -15,12 +15,11 @@ app.use((req, res, next) => {
 });
 
 
-app.set('port', process.env.PORT || 3002);
-var server = app.listen(app.get('port'), function () {
+app.set('port', 3002);
+app.listen(app.get('port'), function () {
     console.log("app started in port 3002");
 });
 
-// serves the index.html
 app.use(express.static(__dirname +'/'));
 
 // View Engine Setup
@@ -45,7 +44,6 @@ con.connect(function(err) {
 
 app.post('/', function(req,res){
     const data = req.body.user_id;
-    console.log(data);
     res.render('default', { userId: data });
 });
 
@@ -56,16 +54,12 @@ app.post('/user', function(req,res){
 
     con.query(getEid, function(err, Eid){
         if(err) throw err;
-        con.query(selUser, function(err, isLecturer){
+        con.query(selUser, function(err, result){
             if (err) throw err;
-            if (isLecturer.length < 1) {
-                 res.send({ "isLecturer": false, Eid: Eid[0].EID });
-            } else {
-                res.send({"isLecturer": true, Eid: Eid[0].EID });
-            };
+            const isLecturer = (result.length < 1) ? false : true;
+            res.send({"isLecturer": isLecturer, Eid: Eid[0].EID });
         }); 
     })
-    
 });
 
 app.post('/lecturer', function(req,res){
@@ -80,11 +74,8 @@ app.post('/lecturer', function(req,res){
             const getSignupUrl = 'SELECT TOOL_ID from sakai_site_tool where REGISTRATION="sakai.signup" and SITE_ID="~'+data.id+'"'
             con.query(getSignupUrl, function(err, toolId){
                 if(err) throw err;
-                if(toolId.length < 1){
-                    res.send({ "hasType": true, "typeData": result, "signupUrl": null });
-                }else {
-                    res.send({ "hasType": true, "typeData": result, "signupUrl": toolId });
-                }
+                const signupUrl = (toolId.length < 1) ? null : toolId;
+                res.send({ "hasType": true, "typeData": result, "signupUrl": signupUrl });
             });
         }
     })
@@ -143,20 +134,13 @@ app.post('/getpermission', function(req,res){
             con.query(getSiteId, function(err, result){
                 if(err) throw err;
                 const userId = result[0].USER_ID;
-                if(userId === data.siteId){
-                    //const getMaintain = 'http://localhost:8080/sakai-ws/rest/sakai/addMemberToAuthzGroupWithRole?sessionid='+sessionId+'&eid='+data.Eid+'&authzgroupid=/site/~'+data.siteId+'&roleid=maintain';
-                   // request(getMaintain, function(err, response, body){
-                    //    if(err) throw err;
-                    //    console.log("maintain",body);
-                    //});
-                } else {
+                if(userId !== data.siteId){
                     const getPermission = 'http://localhost:8080/sakai-ws/rest/sakai/addMemberToAuthzGroupWithRole?sessionid='+sessionId+'&eid='+data.Eid+'&authzgroupid=/site/~'+data.siteId+'&roleid=access';
 
                     request(getPermission, function(err, response, body){
                         if(err) throw err;
                         console.log("access:",body);
                     });
-
                 }
             });
             
@@ -167,10 +151,9 @@ app.post('/getpermission', function(req,res){
 app.post('/usesignup', function(req,res){
     const data = req.body;
     const getSessionId = 'http://localhost:8080/sakai-ws/rest/portallogin/loginAndCreate?id=admin&pw=test&firstName=dummywert&lastName=dummywert&eMail=dummywert';
-    const checkSignupTool = 'SELECT * from sakai_site_tool where REGISTRATION="sakai.signup" and SITE_ID="~'+data.id+'"';
     const getSignupUrl = 'SELECT TOOL_ID from sakai_site_tool where REGISTRATION="sakai.signup" and SITE_ID="~'+data.id+'"';
     
-    con.query(checkSignupTool, function(err, result){
+    con.query(getSignupUrl, function(err, result){
         if(err) throw err;
         if(result.length < 1) {
             request(getSessionId, function(error, response, body){

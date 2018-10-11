@@ -17,7 +17,7 @@ class LecturerTableRow extends Component {
         setTimeout(()=>{ parent.location.href="http://localhost:8080/portal/directtool/"+pageId.TOOL_ID }, 1500);
     }
     handleGotoEmail(e) {
-        location.href="mailto:"+e;
+        location.href="mailto:"+e; //target="_blank"  for ios
     }
 
     handleGotoWeb(e) {

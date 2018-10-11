@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server.js",
-    "webpack": "./node_modules/.bin/webpack -w",
-    "test": "mocha --compilers babel-core/register ./test/test.js"
+    "webpack": "./node_modules/.bin/webpack -w"
   },
   "keywords": [],
   "author": "Han",

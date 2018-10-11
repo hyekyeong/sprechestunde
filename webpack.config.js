@@ -15,7 +15,7 @@ const config = {
    },
    output: {
      filename: 'bundle.js',
-     path: BUILD_DIR,
+     path: BUILD_DIR
    },
    module: {
     rules: [
@@ -39,10 +39,6 @@ const config = {
            plugins: ["transform-object-rest-spread"]
          }
        }]
-     },
-     {
-      test: /\.(jpe?g|png|gif|svg|eot|ttf|woff)/,
-      loader: "file-loader"
      }
     ],
 
